@@ -115,4 +115,33 @@ No error handling → breaks if column names change.
 Not scalable (imagine working on multiple CSVs).
 
 No documentation → not good for collaboration.
-""
+"""
+
+import pandas as pd
+
+def load_csv():
+    """Load csv file and read data."""
+    df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv")
+    return df
+
+def print_average_sepal_length(df):
+    """Print average length.
+
+      DF
+    """
+    avg = df['sepal_length'].mean()
+    print("Average sepal length:", avg)
+    return avg
+
+def print_max_petal_width(df):
+    mx = df['petal_width'].max()
+    print("Max petal width:", mx)
+    return mx
+
+def filter_rows_by_species(df, species):
+    return df[df['species'] == species]
+
+df = load_csv()
+print_average_sepal_length(df)
+print_max_petal_width(df)
+print(filter_rows_by_species(df, 'setosa').head())
